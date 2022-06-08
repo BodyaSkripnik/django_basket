@@ -1,0 +1,11 @@
+.topblock{
+    display: flex;
+    margin-left: 89%;
+}
+.twoblock{
+    width: 10%;
+    margin: 0 auto;
+}
+.indent{
+    margin-top: 10px;
+}

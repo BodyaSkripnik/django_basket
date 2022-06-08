@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/basket.css">
+    <title>Document</title>
+</head>
+<body>
+  <div class="basketto">
+    <table class="basket">
+      <tr>
+       <td>Ваши заказы</td>
+       <td></td>
+       <td colspan="3">Колочество</td>
+       <td>Стоимость</td>
+      </tr>
+      {% for el in basketall %}
+        <tr class="trborder">
+        <td><img class="imgbasket" src="/media/{{el.3}}" alt=""></td>
+        <td class="texttd"><div class="divtext">{{el.1}}</div></td>
+        <td class="tdminus" >
+          <form action="/udateminus">
+            <button class="minus">-</button>
+            <input type="hidden" name="id" value="{{el.0}}">
+            <input type="hidden" name="amount" value="{{el.5}}">
+          </form>
+      </td>
+        <td>{{el.5}}</td>
+        <td class="tdplus">
+          <form action="/udateplus">
+            <button class="plus">+</button>
+            <input type="hidden" name="id" value="{{el.0}}">
+            <input type="hidden" name="amount" value="{{el.5}}">
+          </form>
+        </td>
+        <td>{{el.2}}</td>
+        <td><a href="/delete_basket?id={{el.0}}"><button class="buttondelet" >&times;</button></a></td>
+      </tr>
+     {% endfor %}
+     <tr>
+       <td></td>
+       <td class="newtd">Сумма заказа: {{sum}} грн.</td>
+     </tr>
+    </table>
+</body>
+</html>
